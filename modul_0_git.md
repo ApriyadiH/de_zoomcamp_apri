@@ -139,21 +139,48 @@ git checkout nama_branch
 
 ## Notasi di VS Code
 File di VS Code akan diberikan kode huruf di kanan, kode tersebut adalah
-- A = added, file baru dibuat dan belum ada di commit sebelumnya.
-- M = modified, terdapat perubahan di file dibandingkan commit sebelumnya.
-- U = unmerged, terdapat konflik perubahan. 
+- A = added, file baru dibuat dan belum ada sebelumnya.
+- M = modified, terdapat perubahan di file.
+- U = untracked, file berganti posisi.
+- C = conflict, file memiliki konflik perubahan.
+- D = deleted, file dihapus
 - R = renamed, nama file berubah.
-- C = copied, file berpindah lokasi/disalin
-- D = deleted
-
+- Tidak ada huruf - sama dgn repo atau tidak ada perubahan.
 
 ## Git Add, Commit dan Push
+Setelah kalian menambahkan file atau baris kode baru, kalian bisa mengirim perubahan tersebut ke branch yang sesuai.
 
+Utk commit pertama, mungkin kalian perlu menuliskan email dan nama user. Jika flag --global tidak dicantumkan, maka kalian akan diminta untuk menulis email dan username setiap mengerjakan repo baru.
+```Bash
+# Untuk melakukan commit, kalian harus mengirimkan informasi username dan email.
+git config --global user.email "nama_email@email.com"
+git config --global user.name "nama_username"
+```
 
+```Bash
+# Tambahkan semua file ke staging area
+git add .
+# Bisa juga menambahkan satu per satu
+git add nama_file
+# Setelah menambahkan file ke staging area, periksa kembali.
+# Pastikan file sudah benar dan tidak ada konflik.
 
+# lakukan commit dan gunakan pesan commit yang singkat, jelas dan tidak asal-asalan. Hal ini akan sangat membantumu.
+git commit -m "pesan commit"
+# commit dikirim
+git push -u origin nama_branch
+```
+> Pastikan menggunakan bahasa yang jelas dan mudah dipahami pada commit.
+
+Proses dapat dianalogikan seperti kang paket. 
+- Kamu memasukkan file tertentu dari komputer local menuju staging area. Hal ini seperti memasukkan paket ke dalam mobil van.
+- Kemudian melakukan commit. Hal ini seperti memeriksa kembali barang sudah sesuai.
+- Kemudian push adalah proses pengantaran.
+
+Jika terdapat paket yang tidak sesuai (file yang memiliki konflik), maka proses pengiriman tidak akan bisa dilakukan. Kamu harus memperbaiki konflik terlebih dahulu.
 
 ## Git Pull & Merging Branch
-
+Pull adalah proses memindahkan commit/perubahan dari branch lain menuju branch yang saat ini kamu tempati.
 
 
 
