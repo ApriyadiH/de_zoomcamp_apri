@@ -1,47 +1,85 @@
 # Modul 0 Git dan Github
-
-# Git
-Git merupakan alat untuk mengatur versi dari suatu aplikasi. Bahasa inggrisnya adalah __Version Control__. Git merupakan Version Control System (VCS)
+## 1. Teori
+### Git
+Git adalah alat untuk mengatur versi dari suatu aplikasi. Bahasa inggrisnya adalah __Version Control__. Aplikasi yang mengatur versi disebut juga Version Control System (VCS)
 
 Link Dokumentasi: [Dokumentasi Git](https://git-scm.com/doc)
-Git menawarkan panduan berupa buku (e-book) dan dokumentasi teknikal software seperti pada umumnya.
 Link belajar lainnya:
 - [Web Programming Unpas](https://www.youtube.com/playlist?list=PLFIM0718LjIVknj6sgsSceMqlq242-jNf)
 
-
-## Versi/Version
+### Versi/Version
 Dalam mengembangkan software, terkadang kita terus mengetik dan terjadi kesalahan yang fatal. Sialnya Undo tidak dapat menyelamatkannya. Dari kejadian tersebut, kita mulai membuat copy-an file sebagai back-up. Jika suatu hari terjadi kecelakaan lagi, kita dapat menyalin ulang file back-up. 
 
-File copy-an biasanya diberi nama khusus untuk membedakan file yg lebih tua dan yg lebih baru. Biasanya dengan angka. Misalnya Microsoft Office 2007, terdapat angka 2007. Hal inilah yang disebut dengan __versi__.
+File copy-an biasanya diberi nama khusus untuk membedakan file yg lebih tua dan yg lebih baru. Biasanya dengan angka. Misalnya v1.0.0. Hal inilah yang disebut dengan __versi__.
 
-## Commit
-Git merupakan alat yang mempermudah kita dalam merekam jejak perubahan pada suatu file. Jika terjadi kesalahan, kita dapat mundur ke versi stabil sebelumnya. Selain itu, hal ini sangat membantu kita jika ingin membuat fitur baru yang memiliki resiko. Setiap perubahan akan disimpan sebagai __commit__. 
+### Github
+__Github__ adalah platform untuk berbagi Repository dan kolaborasi developer. Github juga memiliki berbagai fitur lainnya seperti membuat halaman statis (bisa digunakan untuk membuat halaman portfolio).
 
-Commit tidak bekerja seperti file yang di-save, tetapi commit hanya merekam perubahan. Sehingga jika kita bekerja dengan file berukuran besar, setiap commit tidak akan memakan penyimpanan yang banyak.
+### Gabungan Git + Github
+Git dan Github merupakan __dua hal yang berbeda__. Kamu dapat menggunakan Git dan Github secara terpisah. Tetapi dengan menggabungkan keduanya, prosesnya akan jauh lebih baik. Git memungkinkan kita menggunakan perintah Git di terminal dan Github mempermudah berbagi kode lewat internet. Gabungan keduanya digunakan untuk berbagi kode, mengembangkan fitur eksperimental dan kolaborasi.
 
-## Kolaborasi
-Terkadang kita bekerja dalam tim. Git hadir dan memungkinkan kita berbagi Commit dan memiliki sistem integrasi yang baik.
+### Commit
+Git menyimpan rekaman perubahan pada suatu file dalam bentuk __commit__. Jika terjadi kesalahan, kita dapat mundur dan kembali ke commit sebelumnya. Jika ingin membuat fitur baru, kita dapat membuat cabang pada suatu commit.
 
-Dengan sistem dari Git, kita dapat dengan mudah melihat siapa yang mengubah file dan kapan dilakukan. Terdapat juga pesan/komentar yang dapat ditambahkan. Isi pesan yang baik akan membantu proses pengembangan.
+Commit akan disusun pada suatu garis yang bisa dicabangkan. Jika kamu membuat branch baru, maka garis tersebut akan dicabangkan. Cabang juga dapat disatukan jika diperlukan.
 
-# Github
-Github adalah platform untuk berbagi Repository dan kolaborasi developer. Github juga memiliki berbagai fitur lainnya seperti membuat halaman statis (bisa digunakan untuk membuat halaman portfolio).
+### Branch
+__Branch__ merupakan pointer yang menunjuk pada cabang dari suatu commit. Seperti label yang ditempelkan pada suatu commit. Suatu cabang dapat menjadi cabang anonim jika tidak memiliki pointer branch. Tetapi biasanya cabang akan memiliki setidaknya satu pointer branch.
 
-## Repository (Repo)
-Repository merupakan tempat yang menampung Commit dan file kode. Repository kadang disingkat repo. Penyimpanan Repo di Github dilakukan lewat web dan disimpan di cloud.
+Ketika kita membuat commit baru, pointer branch akan ikut berpindah dan menempel pada commit terbaru pada suatu cabang.
+
+### Pointer
+__Pointer__ adalah penunjuk lokasi saat ini dan nama branch. Pointer akan menunjuk dan menempel pada commit. Posisi saat ini disebut dengan __HEAD__. Ketika kita berpindah ke cabang lain, maka pointer HEAD akan dipindahkan. 
+
+Sebenarnya nama branch juga bekerja seperti pointer. Ketika kita membuat branch baru, sebenarnya kita membuat cabang dari commit saat ini. Commit baru tersebut akan diberi pointer nama branch.
+
+__Umumnya__ HEAD akan menunjuk kepada pointer yang juga memiliki pointer nama branch. Namun pada kondisi tertentu (misalnya mundur ke commit yang lama), HEAD akan dipindahkan ke commit yg lama. Commit lama tersebut tidak memiliki pointer nama branch. Kondisi ini disebut dengan __detached HEAD__.
+
+### Branch Master/Main
+Secara bawaan, garis commit yang pertama kali dibuat akan memiliki pointer branch dengan nama Master/Main. Github versi lama akan menggunakan nama Master, tetapi yang terbaru akan menggunakan Main. Kedua branch tersebut akan berperan sebagai branch utama. Branch yang berisi versi stabil dan tidak memiliki error.
+
+Umumnya branch utama di remote dan di local akan dibuat sama/sinkron. Perubahan terbaru akan dikembangkan di branch lain. Setelah fitur baru selesai dikembangkan, fitur tersebut akan dikirim ke branch utama remote. Kemudian branch utama di local akan mengambil perubahan terbaru dari branch utama remote.
+
+### Repository (Repo)
+__Repository__ merupakan tempat yang menampung Commit dan file kode. Repository biasanya disingkat repo. Penyimpanan Repo di Github dilakukan lewat web dan disimpan di cloud.
 
 Karena penyimpanan yang tersimpan di cloud, hal ini sangat mempermudah proses pengiriman Commit dan pengambilan commit dengan internet. 
 
-## Gabungan Git + Github
-Kamu dapat menggunakan Git dan Github secara terpisah. Tetapi dengan menggabungkan keduanya, prosesnya akan jauh lebih mudah. Git memungkinkan kita menggunakan perintah Git di terminal dan Github mempermudah berbagi kode lewat internet.
+### Remote
+__Remote__ merupakan repo yg disimpan diluar komputer local.  Github menyediakan cloud untuk menyimpan repo dan merupakan salah satu contoh Remote. Secara bawaan, remote akan memiliki nama __origin__.
 
-# Praktik
-## Instalasi
-Jika belum memiliki code editor atau IDE (Integrated Development Environment) atau aplikasi untuk menulis kode, saya menyarankan untuk menggunakan Visual Studio Code (VS Code)
+### Gambaran proses
+Dimulai dengan membuat repo di github. Repo yang tersimpan didalam cloud tersebut akan disebut dengan remote. Kemudian salinan remote akan disimpan di komputer local. Pengembangan kode dilakukan di local masing-masing. Jika ingin disimpan, maka commit akan dibuat. 
 
-Link Download:
-- [Download VS Code](https://code.visualstudio.com/download)
-- [Download Git](https://git-scm.com/downloads)
+Terkadang developer ingin mengembangkan fitur baru, sehingga dibuat branch. Setelah branch dibuat, developer akan memindahkan pointer menuju commit yang memiliki pointer branch yg sesuai. Kemudian bekerja disana. Setelah selesai, dibuatlah commit baru. 
+
+Beberapa developer akan melakukan proses pengiriman commit dari local masing-masing menuju remote. Diperlukan proses penyamaan kode di remote. Setelah kode di remote sama, perubahan terbaru akan ditarik kembali ke local. Proses pengembangan akan dilanjutkan dengan kode terbaru. 
+
+## 2. Instalasi
+### Download VS Code
+Developer menuliskan kodenya di aplikasi khusus yang biasanya disebut dengan code editor. IDE (Integrated Development Environment) seperti code editor namun memiliki fitur yang lebih banyak. 
+
+Saya menyarankan pembaca untuk menggunakan Visual Studio Code (VS Code)
+Link: [Download VS Code](https://code.visualstudio.com/download)
+
+### Instalasi VS Code
+Tahapan instalasi cukup sederhana, tidak ada opsi tambahan yang perlu dicentang/ditambahkan sebenarnya.
+1. Terima Lisensi.
+2. Pilih lokasi file vs code.
+3. Kemudian opsi untuk menu di Start, bisa ditambahkan atau diganti namanya.
+4. Kemudian ada opsi tambahan. Tidak ada yg perlu diubah dan opsi yang tersedia juga dapat dipilih semua (tidak ada perubahan yg berbahaya)
+5. Laporan instalasi akan ditampilkan (menampilkan opsi yang dipilih) dan kamu dapat menekan tombol install.
+6. Tunggu prosesnya
+7. Setelah itu selesai dengan menekan tombol Finish.
+8. Setelah membuka vs code, kalian dapat memilih beberapa pengaturan (misalnya tema warna, dll).
+
+### Download dan Instalasi Git
+Link: [Download Git](https://git-scm.com/downloads)
+
+Setelah mengunduh, proses instalasi umumnya hanya mengikuti bawaaan dari Git kecuali pada satu tahapan yang bertuliskan "Choosing the default editor used by Git", saya sarankan menggunakan VS code namun kalian selalu bisa memilih yang lain.
+
+### Membuat Akun Github
+
 
 Proses instalasi tidak terlalu rumit, sehingga tidak akan dibahas disini.
 
@@ -57,6 +95,29 @@ git version 2.44.0.windows.1
 ## Membuat akun Github
 Link: [Github](https://github.com/)
 Proses pembuatan akun tidak terlalu rumit, sehingga tidak akan dibahas disini.
+
+
+
+## Praktik
+### Membuat Repository di Github
+### Clone Repository (git clone)
+### Forking 
+### Mengubah folder menjadi Repository (git init)
+### git config
+### git status
+### git help
+### git log & graph
+### git branch
+### git checkout
+### git add
+### git rm
+### git commit
+### git push
+### merge
+### konflik
+### git fetch dan git pull
+### Github page
+
 
 ## Membuat Repository(Repo)
 Repo merupakan tempat menyimpan Commit. Repository dibuat menggunakan Github.
@@ -172,16 +233,48 @@ git push -u origin nama_branch
 ```
 > Pastikan menggunakan bahasa yang jelas dan mudah dipahami pada commit.
 
-Proses dapat dianalogikan seperti kang paket. 
+Proses dapat dianalogikan seperti kurir paket. 
 - Kamu memasukkan file tertentu dari komputer local menuju staging area. Hal ini seperti memasukkan paket ke dalam mobil van.
 - Kemudian melakukan commit. Hal ini seperti memeriksa kembali barang sudah sesuai.
 - Kemudian push adalah proses pengantaran.
 
 Jika terdapat paket yang tidak sesuai (file yang memiliki konflik), maka proses pengiriman tidak akan bisa dilakukan. Kamu harus memperbaiki konflik terlebih dahulu.
 
-## Git Pull & Merging Branch
-Pull adalah proses memindahkan commit/perubahan dari branch lain menuju branch yang saat ini kamu tempati.
+## Git Fetch dari Branch
+__Fetch__ digunakan untuk mengambil perubahan terbaru dari suatu repo. Hal ini umum dilakukan sebelum melakukan Push dan Merge.
+```Bash
+git fetch origin nama_branch
+```
 
+## Git Merge
+__Merge__ merupakan proses penggabungan 2 buah branch. Setelah proses merge terjadi, kedua branch akan memiliki konten yg sama/berada di commit yg sama.
+
+Terdapat beberapa strategi merge
+- Manual Merge. Memiliki kendali penuh.
+```Bash
+# Pastikan berada di branch yang tepat
+git status
+# Pindah jika diperlukan
+git checkout nama_branch
+# Menggabungkan branch
+git merge nama_branch_yg_ingin_digabungkan
+# Mengatur konflik
+# setelah selesai, lakukan push seperti biasa
+git add .
+git commit -m "pesan_commit"
+git push -u origin "nama_branch"
+```
+- Fast-Forward Merge. Digunakan untuk commit yg linear. Proses yang terjadi hanyalah memindahkan pointer.
+```Bash
+# Memeriksa lokasi branch saat ini
+git status
+# Pindah jika tidak berada di branch yang lama.
+git checkout nama_branch_lama
+# Lakukan merge
+git merge nama_branch_terbaru
+# Jika diperlukan, hapus branch sementara.
+git branch -d branch_yg_ingin_dihapus 
+```
 
 
 ## Forking, Pull Request
